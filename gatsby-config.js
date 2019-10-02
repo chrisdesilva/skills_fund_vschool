@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Skills Fund`,
     description: `Skills Fund finances students to attend the best coding and data science programs around. We believe in 100% loan transparency, and have aligned all incentives around student success.`,
-    headline: `Partner financing page for Skills Fund and SCHOOLNAME`,
+    headline: `Partner financing page for Skills Fund and V School`,
     author: `@Skills_Fund`,
     siteLanguage: `en`,
     logo: `src/images/skillsFund_logo.png`,
