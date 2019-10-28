@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 import { UnmountClosed as Collapse } from 'react-collapse'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -35,31 +35,13 @@ class Homepage extends React.Component {
 
       scrollToApply = () => {
         this.apply.current.scrollIntoView({ behavior: 'smooth' });
-        ReactGA.event({
-          category: `Apply Now Button | ${schoolName}`,
-          action: 'click',
-          label: 'banner'
-        })
+        // ReactGA.event({
+        //   category: `Apply Now Button | ${schoolName}`,
+        //   action: 'click',
+        //   label: 'banner'
+        // })
       }
 
-      scrollToApply2 = () => {
-        this.apply.current.scrollIntoView({ behavior: 'smooth' });
-        ReactGA.event({
-          category: `Apply Now Button | ${schoolName}`,
-          action: 'click',
-          label: 'getting started'
-        })
-      }
-
-      scrollToApply3 = () => {
-        this.apply.current.scrollIntoView({ behavior: 'smooth' });
-        ReactGA.event({
-          category: `Apply Now Button | ${schoolName}`,
-          action: 'click',
-          label: 'footer'
-        })
-      }
-    
       activateMoreInfo = () => {
         this.setState({
           termInfo: !this.state.termInfo,
@@ -108,7 +90,7 @@ class Homepage extends React.Component {
               schoolName={this.props.schoolName}
             />
             <ThreeSteps
-              onClick={this.scrollToApply2} 
+              onClick={this.scrollToApply} 
               ref={this.threesteps}
               schoolName={this.props.schoolName}
             />
@@ -155,7 +137,7 @@ class Homepage extends React.Component {
                 <ContactForm formName={this.props.formName}/>
             </Collapse>
             <ApplyFooter
-              onClick={this.scrollToApply3}
+              onClick={this.scrollToApply}
             />
           </Layout>
         )

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import Homepage from '../components/homepage'
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 import ReactPixel from 'react-facebook-pixel'
 import { GATracking, netlifyFormName, schoolName, schoolURL } from '../constants/programInfo'
 
 
-ReactGA.initialize(GATracking, {
-  debug: false,
-  titleCase: false,
-  gaOptions: {
-    siteSpeedSampleRate: 100,
-    cookieDomain: 'auto'
-  }
-})
+// ReactGA.initialize(GATracking, {
+//   debug: false,
+//   titleCase: false,
+//   gaOptions: {
+//     siteSpeedSampleRate: 100,
+//     cookieDomain: 'auto'
+//   }
+// })
 
 const IndexPage = () => {
 

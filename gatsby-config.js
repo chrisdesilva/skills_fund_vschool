@@ -24,17 +24,17 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-zopfli'
     },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [
-          "UA-68312423-1"
-        ],
-        gtagConfig: {
-          cookie_domain: "auto"
-        }
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [
+    //       "UA-68312423-1"
+    //     ],
+    //     gtagConfig: {
+    //       cookie_domain: "auto"
+    //     }
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
