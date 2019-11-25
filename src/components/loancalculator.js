@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import LoanCalcPaymentTable from './loancalcpaymenttable'
+import Image from '../components/image'
 import { UnmountClosed as Collapse } from 'react-collapse'
 import { 
     defaultLoanAmount, 
     faq,
     interestRates,
     paymentTable,
-    placeholder,
     programLoanInfo,
-    programMaxText
+    schoolName
 } from '../constants/programInfo'
 
 const LoanCalculator = props => {
@@ -122,16 +122,17 @@ const LoanCalculator = props => {
 
     return (
         <div className={props.modal ? "loanCalculator opacity" : "loanCalculator"}>
-            <div className="loanCalculator__content">
+            <div className="loanCalculator__content pt-8 bg-gray-100">
 
-                <div className="loanCalculator__select flex flex-col items-center">
-                    <h2>Simple. Transparent.</h2>
-                    <p id="leadText">Figuring out your monthly payments on a loan shouldn't require a math degree. Find out exactly what you'll pay at {props.schoolname} with a Skills Fund loan:</p>
+                <div className="loanCalculator__select flex flex-col items-center px-4">
+                    <h2 className="text-gray-800">Simple. Transparent.</h2>
+                    <p className="text-gray-800" id="leadText">Figuring out your monthly payments on a loan shouldn't require a math degree. Find out exactly what you'll pay at {schoolName} with a Skills Fund loan:</p>
                     
-                    <p>{` `}</p>
+                    <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4"><Image /></div>
 
-                    <div className="loanCalculator__selectInput">
-                        <select onChange={handleProgramName}>
+                    <div className="loanCalculator__selectInput">    
+                        <select defaultValue={'default'} onChange={handleProgramName}>
+                            <option disabled value="default">Select your program</option>
                             {programLoanInfo.map((program, i) => <option value={i} key={program.name}>{program.name}</option>)}
                         </select>
                     </div>
@@ -139,7 +140,8 @@ const LoanCalculator = props => {
                     <p>{` `}</p>
 
                     <Collapse className="loanCalculator__selectInput" isOpened={showLoanTypes}>
-                        <select onChange={handleLoanType}>
+                        <select defaultValue={'default'} onChange={handleLoanType}>
+                            <option disabled value="default">Select your loan type</option>
                             <option value="0">Interest-Only</option>
                             <option value="1">Immediate Repayment</option>
                         </select>
@@ -148,15 +150,16 @@ const LoanCalculator = props => {
                     <p>{` `}</p>
 
                     <Collapse className="loanCalculator__selectInput" isOpened={multiMetros}>
-                        <select onChange={handleMetro}>
+                        <select defaultValue={'default'} onChange={handleMetro}>
+                            <option disabled value="default">Select your location</option>
                             {metros.map((city, i) => <option key={city.location} value={i}>{city.location}</option>)}
                         </select>
                     </Collapse>
                 </div>
 
-                <div className="loanCalculator__slider flex flex-col items-center">
-                    <input className="loanCalculator__input w-1/2" onChange={handleSliderAmt} onTouchEnd={calculateMonthlyPayment} onMouseUp={calculateMonthlyPayment} type="range" min="2000" step="5" max={programMax} value={loanValue}/>
-                    <div className="loanCalculator__labels flex justify-between w-1/2">
+                <div className="loanCalculator__slider flex flex-col items-center px-4">
+                    <input className="loanCalculator__input w-full lg:w-1/2" onChange={handleSliderAmt} onTouchEnd={calculateMonthlyPayment} onMouseUp={calculateMonthlyPayment} type="range" min="2000" step="5" max={programMax} value={loanValue}/>
+                    <div className="loanCalculator__labels flex justify-between w-full lg:w-1/2">
                         <p>$2,000</p>
                         <p className="text-center">Loan Amount<br/><span className="loanCalculator__amount">{formatter.format(loanValue)}</span></p>
                         <p>{formatter.format(programMax)}</p>
@@ -164,26 +167,26 @@ const LoanCalculator = props => {
                     {/* <span className="loanCalculator__disclaimers" onClick={props.toggleModal}>Disclaimers</span> */}
                 </div>
                 <div className="loanCalculator__monthlyPayments flex">
-                <div className="loanCalculator__36months w-1/3">
-                    <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3>
-                    <h4 className="text-center">36 Month Option</h4>
-                    <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Interest Only Payment</p></></span>
+                <div className="loanCalculator__36months w-1/2">
+                    {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
+                    <h3 className="text-center">36 Month Option</h3>
+                    <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
                     <div className={loanType === "0" ? "show" : "show move"}>
-                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payment</p>
+                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(totalPayment.payment36)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost</p>
                     </div>
                 </div>
-
-                <div className="loanCalculator__60months w-1/3">
-                    <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3>
-                    <h4 className="text-center">60 Month Option</h4>
-                    <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Interest Only Payment</p></></span>
+                
+                <div className="loanCalculator__60months w-1/2">
+                    {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
+                    <h3 className="text-center">60 Month Option</h3>
+                    <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
                     <div className={loanType === "0" ? "show" : "show move"}>
-                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payment</p>
+                        <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(totalPayment.payment60)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost</p>
                     </div>
                 </div>
-                <div className="loanCalculator__isa w-1/3">
+                {/* <div className="loanCalculator__isa w-1/3">
                     <h3 className="text-md text-center mb-1">Income Share Agreement</h3>
                     <h4 className="text-center">Payment Plan</h4>
                     <span className="show"><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">$60,000</p><p className="loanCalculator__paymentLabel text-center text-xs">Annual Salary</p></></span>
@@ -191,8 +194,11 @@ const LoanCalculator = props => {
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">$750</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payment</p>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">{formatterWithCents.format(programMax * 1.5)}</p><p className="loanCalculator__paymentLabel text-center text-xs">Total Cost</p>
                     </div>
+                </div> */}
                 </div>
-                </div>
+                <p className="show text-center text-sm mb-0 pb-4">{loanType === "0" ? "Make interest-only payments while in the program. Two months after completion, begin full payments." : "Start making full payments (interest + principal) about one month after disbursement."}
+
+</p>
 
             </div>
         </div>
