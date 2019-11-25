@@ -125,15 +125,18 @@ const LoanCalculator = props => {
             <div className="loanCalculator__content pt-8 bg-gray-100">
 
                 <div className="loanCalculator__select flex flex-col items-center px-4">
-                    <h2 className="text-gray-800">Simple. Transparent.</h2>
-                    <p className="text-gray-800" id="leadText">Figuring out your monthly payments on a loan shouldn't require a math degree. Find out exactly what you'll pay at {schoolName} with a Skills Fund loan:</p>
-                    
-                    <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4"><Image /></div>
+                    <div className="flex flex-col md:flex-row md:justify-between mb-8">
+                        <div className="flex flex-col md:w-1/2 justify-center px-4">
+                            <h2 className="text-gray-800 text-center">Simple. Transparent.</h2>
+                            <p className="text-gray-800" id="leadText">Figuring out your monthly payments on a loan shouldn't require a math degree. Find out exactly what you'll pay at {schoolName} with a Skills Fund loan.</p>
+                        </div>
+                        <div className="w-full md:w-1/2 lg:w-1/3"><Image /></div>
+                    </div>
 
+                    <label className="text-sm" htmlFor="program">Select your program</label>
                     <div className="loanCalculator__selectInput">    
-                        <select defaultValue={'default'} onChange={handleProgramName}>
-                            <option disabled value="default">Select your program</option>
-                            {programLoanInfo.map((program, i) => <option value={i} key={program.name}>{program.name}</option>)}
+                        <select id="program" defaultValue={'default'} onChange={handleProgramName}>
+                            {programLoanInfo.map((program, i) => <option label={program.name} value={i} key={program.name}>{program.name}</option>)}
                         </select>
                     </div>
 
@@ -141,9 +144,9 @@ const LoanCalculator = props => {
 
                     <Collapse className="loanCalculator__selectInput" isOpened={showLoanTypes}>
                         <select defaultValue={'default'} onChange={handleLoanType}>
-                            <option disabled value="default">Select your loan type</option>
-                            <option value="0">Interest-Only</option>
-                            <option value="1">Immediate Repayment</option>
+                            <option label="select your loan type" disabled value="default">Select your loan type</option>
+                            <option label="interest only" value="0">Interest-Only</option>
+                            <option label="immediate repayment" value="1">Immediate Repayment</option>
                         </select>
                     </Collapse>
 
@@ -151,22 +154,22 @@ const LoanCalculator = props => {
 
                     <Collapse className="loanCalculator__selectInput" isOpened={multiMetros}>
                         <select defaultValue={'default'} onChange={handleMetro}>
-                            <option disabled value="default">Select your location</option>
-                            {metros.map((city, i) => <option key={city.location} value={i}>{city.location}</option>)}
+                            <option label="select your location" disabled value="default">Select your location</option>
+                            {metros.map((city, i) => <option label={city.location} key={city.location} value={i}>{city.location}</option>)}
                         </select>
                     </Collapse>
                 </div>
 
                 <div className="loanCalculator__slider flex flex-col items-center px-4">
-                    <input className="loanCalculator__input w-full lg:w-1/2" onChange={handleSliderAmt} onTouchEnd={calculateMonthlyPayment} onMouseUp={calculateMonthlyPayment} type="range" min="2000" step="5" max={programMax} value={loanValue}/>
+                    <input aria-label="loan-calculator-slider" className="loanCalculator__input w-full lg:w-1/2 mb-2" onChange={handleSliderAmt} onTouchEnd={calculateMonthlyPayment} onMouseUp={calculateMonthlyPayment} type="range" min="2000" step="5" max={programMax} value={loanValue}/>
                     <div className="loanCalculator__labels flex justify-between w-full lg:w-1/2">
-                        <p>$2,000</p>
+                        <p>Min<br/>$2,000</p>
                         <p className="text-center">Loan Amount<br/><span className="loanCalculator__amount">{formatter.format(loanValue)}</span></p>
-                        <p>{formatter.format(programMax)}</p>
+                        <p className="text-right">Max<br/>{formatter.format(programMax)}</p>
                     </div>
                     {/* <span className="loanCalculator__disclaimers" onClick={props.toggleModal}>Disclaimers</span> */}
                 </div>
-                <div className="loanCalculator__monthlyPayments flex">
+                <div className="loanCalculator__monthlyPayments flex my-8">
                 <div className="loanCalculator__36months w-1/2">
                     {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
                     <h3 className="text-center">36 Month Option</h3>
@@ -187,8 +190,8 @@ const LoanCalculator = props => {
                     </div>
                 </div>
                 {/* <div className="loanCalculator__isa w-1/3">
-                    <h3 className="text-md text-center mb-1">Income Share Agreement</h3>
-                    <h4 className="text-center">Payment Plan</h4>
+                    <h3 className="text-md text-center mb-1"></h3>
+                    <h3 className="text-center">Income Share Agreement</h3>
                     <span className="show"><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">$60,000</p><p className="loanCalculator__paymentLabel text-center text-xs">Annual Salary</p></></span>
                     <div>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">$750</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payment</p>

@@ -8,7 +8,7 @@ import { FaAngleDown } from 'react-icons/fa'
 const InfoButtonContainer = props => {
 
     return (
-        <div className="flex flex-wrap items-center justify-around p-4 mx-2 lg:mx-10 rounded shadow-xl">
+        <div className="flex flex-wrap items-center justify-around p-4">
             <div onClick={props.terms} className="cursor-pointer w-1/4 footerLink flex flex-col items-center">
                 <p className="m-0">Term Details</p>
                 <FaAngleDown className="text-gray-800" />
