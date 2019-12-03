@@ -26,6 +26,7 @@ const LoanCalculator = props => {
     const [locations, setLocations] = useState(programLoanInfo[0]['locations'])
     const [metros, setMetros] = useState(programLoanInfo[0]['metros'])
     const [multiMetros, hasMultiMetros] = useState(programLoanInfo[0]['showMetros'])
+    const [loanInformation, setLoanInformation] = useState(programLoanInfo[0].loanInfo)
 
     const formatter = new Intl.NumberFormat('en-US', { 
         style: 'currency',
@@ -93,6 +94,7 @@ const LoanCalculator = props => {
         setLoanType(programLoanInfo[programIndex]['defaultLoanType'])
         hasMultiMetros(programLoanInfo[programIndex]['showMetros'])
         setShowLoanTypes(programLoanInfo[programIndex]['showLoanTypes'])
+        setLoanInformation(programLoanInfo[programIndex]['loanInfo'])
 
         // check to see if the program has multiple locations and set the program max based on individual cities
         if(programLoanInfo[programIndex]['showMetros']){
@@ -119,6 +121,10 @@ const LoanCalculator = props => {
             setNonPaymentPeriod(programLoanInfo[programIndex]['loanInfo']['0']['k'])
         }
     }, [loanType])
+
+    useEffect(() => { // watches for changes to metroIndex, updates dropdown/loan info accordingly
+        setLoanInformation(programLoanInfo[programIndex]['metros'][metroIndex]['loanInfo'])
+    }, [metroIndex])
 
     return (
         <div className={props.modal ? "loanCalculator opacity" : "loanCalculator"}>
@@ -172,7 +178,8 @@ const LoanCalculator = props => {
                 <div className="loanCalculator__monthlyPayments flex my-8">
                 <div className="loanCalculator__36months w-1/2">
                     {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
-                    <h3 className="text-center">36 Month Option</h3>
+                    <h3 className="text-center mb-2">36 Month Option</h3>
+                    <h4 className="text-center">{loanInformation[loanType]['apr36']}% APR*</h4>
                     <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
                     <div className={loanType === "0" ? "show" : "show move"}>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment36}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
@@ -182,7 +189,8 @@ const LoanCalculator = props => {
                 
                 <div className="loanCalculator__60months w-1/2">
                     {/* <h3 className="text-md text-center mb-1">{loanType === "0" ? <span className={loanType === "0" ? "show" : "hide"}>Interest-Only</span> : <span className={loanType === "1" ? "show" : "hide"}>Immediate Repayment</span>}</h3> */}
-                    <h3 className="text-center">60 Month Option</h3>
+                    <h3 className="text-center mb-2">60 Month Option</h3>
+                    <h4 className="text-center">{loanInformation[loanType]['apr60']}% APR*</h4>
                     <span className={loanType === "0" ? "show" : "hide"}><><p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${interestPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments in School</p></></span>
                     <div className={loanType === "0" ? "show" : "show move"}>
                         <p className="loanCalculator__paymentAmounts text-3xl text-primary font-bold mb-1 text-center">${monthlyPayment.payment60}</p><p className="loanCalculator__paymentLabel text-center text-xs">Monthly Payments{loanType === "0" ? " After Graduation" : null}</p>
@@ -199,9 +207,8 @@ const LoanCalculator = props => {
                     </div>
                 </div> */}
                 </div>
-                <p className="show text-center text-sm mb-0 pb-4">{loanType === "0" ? "Make interest-only payments while in the program. Two months after completion, begin full payments." : "Start making full payments (interest + principal) about one month after disbursement."}
-
-</p>
+                <p className="show text-center text-sm mb-4 pb-4">{loanType === "0" ? "Make interest-only payments while in the program. Two months after completion, begin full payments." : "Start making full payments (interest + principal) about one month after disbursement."}</p>
+                <p className="text-center text-xs italic mb-0 pb-4 px-8">*The Annual Percentage Rate (APR) shown is estimated based on the loan type, origination fee, and approximate program length. The actual APR may be slightly different than the example provided based on loan type and program length. To learn how an Annual Percentage Rate (APR) is calculated, visit our <a className="text-secondary" href="https://skills.fund/resources/how-is-an-apr-calculated">blog</a>.</p>
 
             </div>
         </div>
