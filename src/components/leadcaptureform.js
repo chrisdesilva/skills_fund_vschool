@@ -79,7 +79,7 @@ const LeadCaptureForm = props => {
                     <input type="text" name="Lead Cycle" value="Lead Capture" readOnly/>
                     <input type="text" name="School" value={schoolName} readOnly/>
                 </div>
-                {thankYou ? <p className="text-center">Thank you, your guide will be in your inbox soon!</p>: <input className="cursor-pointer opacityApply uppercase bg-primary p-3 mb-4 w-48 rounded-full shadow-lg text-white" value="Send me the guide!" id="leadCaptureSubmitBtn" type="submit"/>}
+                {thankYou ? <p className="text-center">Thank you, your guide will be in your inbox soon!</p>: <input className="cursor-pointer opacityApply uppercase bg-primary p-3 mb-4 w-48 rounded-full text-white" value="Send me the guide!" id="leadCaptureSubmitBtn" type="submit"/>}
             </form>
             </div>
         </div>

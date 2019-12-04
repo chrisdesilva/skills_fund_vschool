@@ -9,7 +9,7 @@ const ApplyFooter = props => {
                 <div className="mx-2 px-12">
                 <p className="text-center">Begin building your future today!</p>
                     <Button
-                        buttonClassName="opacityApply uppercase bg-secondary p-3 rounded-full shadow-lg text-white w-40"
+                        buttonClassName="opacityApply uppercase bg-secondary p-3 rounded-full text-white w-40"
                         divClassName="flex justify-center"
                         text="apply now"
                         onClick={props.onClick}

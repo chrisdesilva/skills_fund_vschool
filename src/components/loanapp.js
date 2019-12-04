@@ -236,7 +236,7 @@ const LoanApp = React.forwardRef((props, ref) => {
                     <input type="text" name="Student Loan Application Status" value="BLA Click Email Submitted" readOnly/>
                     <input type="text" name="Clicked Begin Loan Application BLA" value="BLA Click" readOnly/>
                 </div>
-                {submitted ? <span className="pt-4 text-center">Thanks for applying! Your loan application has opened in a new window. If the application does not open and pop-up blockers have been disabled, please contact <a href="mailto:tech@skills.fund" className="text-primary">Tech@Skills.Fund</a>.</span> : <input className="opacityApply uppercase bg-secondary p-3 my-4 w-48 rounded-full shadow-lg text-white cursor-pointer" value="APPLY NOW" id="loanAppSubmitBtn" type="submit"/>}
+                {submitted ? <span className="pt-4 text-center">Thanks for applying! Your loan application has opened in a new window. If the application does not open and pop-up blockers have been disabled, please contact <a href="mailto:tech@skills.fund" className="text-primary">Tech@Skills.Fund</a>.</span> : <input className="opacityApply uppercase bg-secondary p-3 my-4 w-48 rounded-full text-white cursor-pointer" value="APPLY NOW" id="loanAppSubmitBtn" type="submit"/>}
                 {!submitted && <p className="mt-3 text-xs italic">Please note: clicking Apply Now will open your loan application in a new tab</p>}
             </form>
             </div>

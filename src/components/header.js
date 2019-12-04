@@ -8,7 +8,7 @@ import { schoolLogo, schoolName, schoolURL } from "../constants/programInfo"
 
 const Header = ({ siteTitle }) => (
   <header>
-    <div className="flex justify-center shadow-lg">
+    <div className="flex justify-center border border-b-2">
       <div className="w-full flex justify-around items-center py-2 px-2 lg:px-0">
           <a
             href={schoolURL}
