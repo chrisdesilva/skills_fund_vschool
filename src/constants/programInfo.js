@@ -73,8 +73,14 @@ export const faq = {
 	// max loan amounts by program for faq1
 	loanRange: [
 		{
-			programName: "V School's Full Stack JavaScript and User Experience Design Full-Time programs",
+			programName: "V School's User Experience Design Full-Time program",
 			maxAmount: '$14,900',
+			col: true,
+			colAmount: '$10,000'
+		},
+		{
+			programName: "V School's Full Stack JavaScript program",
+			maxAmount: '$21,000',
 			col: true,
 			colAmount: '$10,000'
 		},
@@ -145,7 +151,7 @@ export const programLoanInfo = [
 		url: 'https://my.skills.fund/application?lenderCode=SFVS',
 		loanInfo: {
 			// match loanInfo in first metro below
-			maxLoanAmt: 24900,
+			maxLoanAmt: 31000,
 			loanTerm36: true,
 			loanTerm60: true,
 			'0': {
@@ -166,7 +172,7 @@ export const programLoanInfo = [
 				location: 'Metro 1',
 				loanInfo: {
 					// // match loanInfo to Program 1 above
-					maxLoanAmt: 24900,
+					maxLoanAmt: 31000,
 					loanTerm36: true,
 					loanTerm60: true,
 					'0': {
@@ -255,7 +261,7 @@ export const programLoanInfo = [
 
 // ***** BEGIN LOAN CALC TEXT INFO *****
 export const programMaxText =
-	'Choose the loan amount that works best for you. Borrow up to $14,900 for tuition & $10,000 for cost of living for the Full Stack JavaScript & User Experience Design Full-Time programs or up to $5,400 for tuition for the UX Part-Time program.';
+	'Choose the loan amount that works best for you. Borrow up to $21,000 for tuition & $10,000 for cost of living for the Full Stack JavaScript program, up to $14,900 for tuition & $10,000 for cost of living for the User Experience Design Full-Time program, or up to $5,400 for tuition for the UX Part-Time program.';
 
 export const paymentTable = {
 	headers: [ 'Program', 'Tuition', 'Cost of Living', 'Max Total' ],
