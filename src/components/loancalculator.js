@@ -30,8 +30,7 @@ const LoanCalculator = () => {
   const [loanTypes, showLoanTypes] = useState(
     programLoanInfo[0]["showLoanTypes"]
   ) // shows IR/IO dropdown
-  const [metros, setMetros] =
-    useState(programLoanInfo[0]["locations"]) || useState(null)
+  const [metros, setMetros] = useState(programLoanInfo[0]["locations"])
   const [loanInformation, setLoanInformation] = useState(
     programLoanInfo[0]["loanInfo"]
   ) // set initial loan info
