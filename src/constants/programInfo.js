@@ -145,12 +145,12 @@ export const faq = {
       col: true,
       colAmount: "$10,000",
     },
-    {
-      programName: "V School's User Experience Design Part-Time program",
-      maxAmount: "$5,400",
-      col: false,
-      colAmount: "$6,000",
-    },
+    // {
+    //   programName: "V School's User Experience Design Part-Time program",
+    //   maxAmount: "$5,400",
+    //   col: false,
+    //   colAmount: "$6,000",
+    // },
   ],
 }
 
@@ -285,46 +285,46 @@ export const programLoanInfo = [
       },
     ],
   },
-  {
-    name: "UX Design Part-Time",
-    url: "https://my.skills.fund/application?lenderCode=SKVUSR18",
-    loanInfo: {
-      // match loanInfo in first metro below
-      maxLoanAmt: 5400,
-      loanTerm36: true,
-      loanTerm60: true,
-      "Interest Only": {
-        k: 5,
-      },
-      "Immediate Repayment": {
-        apr36: 12.36,
-        apr60: 13.14,
-      },
-    },
-    defaultLoanType: "Immediate Repayment", // leave at 0 for interest-only, set to 1 for immediate repayment
-    showMetros: false,
-    showLoanTypes: false,
-    loanTypes: ["Immediate Repayment"],
-    locations: ["Metro A", "Metro B", "Metro C"],
-    metros: [
-      {
-        location: "Metro A",
-        loanInfo: {
-          // match loanInfo to Program 3 loanInfo above
-          maxLoanAmt: 5400,
-          loanTerm36: true,
-          loanTerm60: true,
-          "Interest Only": {
-            k: 5,
-          },
-          "Immediate Repayment": {
-            apr36: 12.36,
-            apr60: 13.14,
-          },
-        },
-      },
-    ],
-  },
+  // {
+  //   name: "UX Design Part-Time",
+  //   url: "https://my.skills.fund/application?lenderCode=SKVUSR18",
+  //   loanInfo: {
+  //     // match loanInfo in first metro below
+  //     maxLoanAmt: 5400,
+  //     loanTerm36: true,
+  //     loanTerm60: true,
+  //     "Interest Only": {
+  //       k: 5,
+  //     },
+  //     "Immediate Repayment": {
+  //       apr36: 12.36,
+  //       apr60: 13.14,
+  //     },
+  //   },
+  //   defaultLoanType: "Immediate Repayment", // leave at 0 for interest-only, set to 1 for immediate repayment
+  //   showMetros: false,
+  //   showLoanTypes: false,
+  //   loanTypes: ["Immediate Repayment"],
+  //   locations: ["Metro A", "Metro B", "Metro C"],
+  //   metros: [
+  //     {
+  //       location: "Metro A",
+  //       loanInfo: {
+  //         // match loanInfo to Program 3 loanInfo above
+  //         maxLoanAmt: 5400,
+  //         loanTerm36: true,
+  //         loanTerm60: true,
+  //         "Interest Only": {
+  //           k: 5,
+  //         },
+  //         "Immediate Repayment": {
+  //           apr36: 12.36,
+  //           apr60: 13.14,
+  //         },
+  //       },
+  //     },
+  //   ],
+  // },
 ]
 
 // ***** BEGIN LOAN CALC TEXT INFO *****
