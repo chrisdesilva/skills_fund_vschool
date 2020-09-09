@@ -134,8 +134,8 @@ export const faq = {
   // max loan amounts by program for faq1
   loanRange: [
     {
-      programName: "V School's User Experience Design Full-Time program",
-      maxAmount: "$14,900",
+      programName: "V School's UX/UI program",
+      maxAmount: "$21,000",
       col: true,
       colAmount: "$10,000",
     },
@@ -248,7 +248,7 @@ export const programLoanInfo = [
     ],
   },
   {
-    name: "UX Design Full-Time",
+    name: "UX/UI",
     url: "https://my.skills.fund/application?lenderCode=SKVUE18",
     loanInfo: {
       // match loanInfo in first metro below
