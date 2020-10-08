@@ -137,13 +137,13 @@ export const faq = {
       programName: "V School's UX/UI program",
       maxAmount: "$21,000",
       col: true,
-      colAmount: "$10,000",
+      colAmount: "$5,000",
     },
     {
-      programName: "V School's Full Stack JavaScript program",
+      programName: "V School's Full Stack Javascript program",
       maxAmount: "$21,000",
       col: true,
-      colAmount: "$10,000",
+      colAmount: "$5,000",
     },
     // {
     //   programName: "V School's User Experience Design Part-Time program",
@@ -208,7 +208,7 @@ export const moreThanSixPrograms = false // set to true if there are 7 or more p
 export const programLoanInfo = [
   // update with program names and corresponding loan URLs with market segment code from Master Loan Parameters
   {
-    name: "Full Stack JavaScript",
+    name: "Full Stack Javascript",
     url: "https://my.skills.fund/application?lenderCode=SFVS",
     loanInfo: {
       // match loanInfo in first metro below
