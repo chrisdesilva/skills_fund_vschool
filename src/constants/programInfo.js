@@ -88,10 +88,10 @@ export const previewText = {
       body:
         "Make low interest-only payments while you study and for three months after completing your program.",
     },
-    {
-      heading: "Immediate Repayment",
-      body: "Start paying your loan back one month after your program begins.",
-    },
+    // {
+    //   heading: "Immediate Repayment",
+    //   body: "Start paying your loan back one month after your program begins.",
+    // },
     // {
     //   heading: "36-Month Loan",
     //   // body:
@@ -114,9 +114,9 @@ export const faq = {
     "Full Stack JavaScript & User Experience Design Full-Time programs", // leave as empty string is cost of living availability is the same across all programs
   multCostOfLivingPrograms: true, // true if costOfLivingPrograms string has more than one program
   interestOnly: true, // true if interest-only payments are an option
-  immediateRepayment: true, // true if immediate repayment is an option
+  immediateRepayment: false, // true if immediate repayment is an option
   multipleLoanLengths: true, // true if 36 and 60 month options are both available
-  multipleLoanTypes: true, // true if both IR and IO are available
+  multipleLoanTypes: false, // true if both IR and IO are available
   multiPrograms: true, // only true if there are multiple programs
   onlinePrograms: false, // true if at least one program is remote/online
   schoolHQState: "WA",
